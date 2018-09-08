@@ -10,6 +10,7 @@ var grid = make2DArray(10, 10);
 var w = 20;
 var rows;
 var cols;
+var totalMines = 17;
 
 function setup() {
     img = loadImage("assets/hariton.jpg")
@@ -22,6 +23,18 @@ function setup() {
             grid[i][j] = new Cell(i, j, w);
         }
     }
+
+    for (var n=0; n<totalMines; n++){
+        var i = floor(random(cols));
+        var j = floor(random(rows));
+        if (!(grid[i][j].mine)) {
+            grid[i][j].mine = true;
+        }
+        else {
+            n--;
+        }
+    }
+
     for (var i=0; i<cols; i++) {
         for (var j=0; j<rows; j++) {
             grid[i][j].countNeighbors();

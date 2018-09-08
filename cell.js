@@ -4,10 +4,8 @@ function Cell(i, j, w) {
     this.x = i*w;
     this.y = j*w;
     this.w = w;
-    if (random(1)<0.5) {
-        this.mine = true;
-    }
-    this.revealed = 1;
+    this.mine = false;
+    this.revealed = false;
     this.neighborCount = 0;
 }
 
@@ -23,9 +21,13 @@ Cell.prototype.show = function() {
         else {
             fill(200);
             rect(this.x, this.y, this.w, this.w);
+
             textAlign(CENTER);
             fill(0);
-            text(this.neighborCount, this.x+this.w/2, this.y+3*w/4);
+            if (this.neighborCount!=0){
+                text(this.neighborCount, this.x+this.w/2, this.y+3*w/4);
+            }
+
         }
     }
 }
