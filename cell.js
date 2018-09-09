@@ -15,7 +15,8 @@ Cell.prototype.show = function() {
     rect(this.x, this.y, this.w, this.w);
     if (this.revealed){
         if (this.mine) {
-            image(img, this.x+1, this.y+1, this.w-1, this.w-1);
+            fill(0);
+            ellipse(this.i*w+w/2, this.j*w+w/2, w/2, w/2);
         }
 
         else {
