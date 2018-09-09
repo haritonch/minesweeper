@@ -21,7 +21,6 @@ Cell.prototype.show = function() {
         else {
             fill(200);
             rect(this.x, this.y, this.w, this.w);
-
             textAlign(CENTER);
             fill(0);
             if (this.neighborCount!=0){
@@ -53,5 +52,16 @@ Cell.prototype.contains = function(x, y) {
 }
 
 Cell.prototype.reveal = function() {
-    this.revealed = true;
+    if (this.revealed == false) {
+        this.revealed = true;
+        if (this.neighborCount == 0 && !this.mine){
+            for (var i=-1; i<2; i++) {
+                for (var j=-1; j<2; j++){
+                    if (this.i+i>-1 && this.i+i<cols && this.j+j>-1 && this.j+j<rows){
+                        grid[this.i+i][this.j+j].reveal();
+                    }
+                }
+            }
+        }
+    }
 }

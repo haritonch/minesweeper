@@ -47,6 +47,9 @@ function mousePressed() {
         for (var j=0; j<rows; j++) {
             if (grid[i][j].contains(mouseX, mouseY)) {
                 grid[i][j].reveal();
+                if (grid[i][j].mine) {
+                    gameOver();
+                }
             }
         }
     }
@@ -57,6 +60,14 @@ function draw() {
     for (var i=0; i<cols; i++) {
         for (var j=0; j<rows; j++) {
             grid[i][j].show();
+        }
+    }
+}
+
+function gameOver(){
+    for (var i=0; i<cols; i++) {
+        for (var j=0; j<cols; j++) {
+            grid[i][j].reveal();
         }
     }
 }
