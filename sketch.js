@@ -77,5 +77,5 @@ function gameOver(){
             grid[i][j].reveal();
         }
     }
-    document.getElementById('maintext').innerHTML = "You Suck!";
+    document.getElementById('maintext').innerHTML = "You Suck!\n reload to play again";
 }
