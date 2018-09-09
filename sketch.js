@@ -10,11 +10,11 @@ var grid = make2DArray(10, 10);
 var w = 20;
 var rows;
 var cols;
-var totalMines = 17;
+var totalMines = 20;
+var totalRevealed=0;
 
 function setup() {
-    img = loadImage("assets/hariton.jpg")
-    createCanvas(201, 201);
+    createCanvas(401,401);
     cols = floor(width / w);
     rows = floor(height / w);
     grid = make2DArray(cols, rows);
@@ -23,7 +23,7 @@ function setup() {
             grid[i][j] = new Cell(i, j, w);
         }
     }
-
+    totalMines = (cols/3)*(rows/3);
     for (var n=0; n<totalMines; n++){
         var i = floor(random(cols));
         var j = floor(random(rows));
@@ -46,7 +46,14 @@ function mousePressed() {
     for (var i=0; i<cols; i++) {
         for (var j=0; j<rows; j++) {
             if (grid[i][j].contains(mouseX, mouseY)) {
+                while (grid[i][j].mine && totalRevealed==0){
+                    setup();
+                }
                 grid[i][j].reveal();
+                totalRevealed++;
+                if (totalRevealed>=rows*cols-rows*cols/9){
+                    document.getElementById('maintext').innerHTML = "You Rock!\n reload to play again";
+                }
                 if (grid[i][j].mine) {
                     gameOver();
                 }
@@ -70,4 +77,5 @@ function gameOver(){
             grid[i][j].reveal();
         }
     }
+    document.getElementById('maintext').innerHTML = "You Suck!";
 }
