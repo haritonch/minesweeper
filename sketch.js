@@ -51,8 +51,8 @@ function mousePressed() {
                 }
                 grid[i][j].reveal();
                 totalRevealed++;
-                if (totalRevealed>=rows*cols-rows*cols/9){
-                    document.getElementById('maintext').innerHTML = "You Rock!\n reload to play again";
+                if (totalRevealed>=rows*cols-totalMines){
+                    document.getElementById('maintext').innerHTML = "You Rock! Congratulations!";
                 }
                 if (grid[i][j].mine) {
                     gameOver();
@@ -80,6 +80,7 @@ function gameOver(){
     document.getElementById('maintext').innerHTML = "You Suck!\n reload to play again";
 }
 
+//Preventing Right Click window
 if (document.addEventListener) {
             document.addEventListener('contextmenu', function (e) {
                 e.preventDefault();
@@ -88,4 +89,4 @@ if (document.addEventListener) {
             document.attachEvent('oncontextmenu', function () {
                 window.event.returnValue = false;
             });
-        }
+}
