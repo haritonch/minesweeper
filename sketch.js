@@ -79,3 +79,13 @@ function gameOver(){
     }
     document.getElementById('maintext').innerHTML = "You Suck!\n reload to play again";
 }
+
+if (document.addEventListener) {
+            document.addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+            }, false);
+        } else {
+            document.attachEvent('oncontextmenu', function () {
+                window.event.returnValue = false;
+            });
+        }
