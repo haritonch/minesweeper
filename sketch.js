@@ -11,7 +11,7 @@ var w = 20;
 var rows;
 var cols;
 var totalMines = 20;
-var totalRevealed=0;
+var totalRevealed;
 
 function setup() {
     document.getElementById('maintext').innerHTML = "A simple Minesweeper!";
@@ -24,6 +24,7 @@ function setup() {
             grid[i][j] = new Cell(i, j, w);
         }
     }
+    totalRevealed=0;
     totalMines = (cols/3)*(rows/3);
     for (var n=0; n<totalMines; n++){
         var i = floor(random(cols));
