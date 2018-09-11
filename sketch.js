@@ -14,6 +14,7 @@ var totalMines = 20;
 var totalRevealed=0;
 
 function setup() {
+    document.getElementById('maintext').innerHTML = "A simple Minesweeper!";
     createCanvas(401,401);
     cols = floor(width / w);
     rows = floor(height / w);
